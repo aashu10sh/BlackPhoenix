@@ -1,3 +1,3 @@
 # BlackPhoenix
 
-## Done by Apurba and Aashutosh and Samrat
+## Done by Apurba and Aashutosh and Samrat Nakarmi
