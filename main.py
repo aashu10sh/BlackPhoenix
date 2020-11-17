@@ -1,3 +1,6 @@
+import platform
+print(platform.system())
+
 
 class Encryptor:
 
@@ -18,7 +21,7 @@ class Encryptor:
     passw = self.password
     
     for w in word:
-      aword = ord(w) + 
+      aword = ord(w) + 0
       aword = chr(aword)
       enc += aword
     print(enc)
@@ -32,7 +35,7 @@ class Decryptor:
         nums = [1, 2, 3, 4, 5, 6, 7, 8, 9]
         passw = self.password
         for k in enc:
-            dword = ord(k) - 
+            dword = ord(k) - 0
             dword = chr(dword)
         print(dword)
 
@@ -49,7 +52,7 @@ def construct(ctype, tail, passw, passvalue):
     if (cond):
         if tail == '-w':
             enc.word(passvalue)
-        elif tail == '-f'
+        elif tail == '-f':
             enc.file(passvalue)
     else:
         print("Invalid Command")
