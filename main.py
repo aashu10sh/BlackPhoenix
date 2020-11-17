@@ -10,7 +10,9 @@ class Encryptor:
 
   def file(self, filename):
     passw = self.passw
-    
+    f = open(filename)
+    for lines in f:
+        a = password + lines
 
 
   def word (self, word):
