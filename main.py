@@ -1,6 +1,11 @@
 #Importing platform module for finding out the os they are using
 import platform
 import random #Importing random for getting random numbers
+from os import sys as terminal #Importing this module to run system commands
+import termcolor
+from termcolor import colored
+
+
 
 #Creating a Object called Encryptor which encrypts 
 class Encryptor:
@@ -76,11 +81,11 @@ helpc = '''
 ######################################
 '''
 while True:
-    usr_input = input("[Black Pheonix]# ") #Printing it to look like a console
+    usr_input = input(colored("[Black Pheonix]# ",'red')) #Printing it to look like a console
     firsts = usr_input[:7] #Taking first seven character from user input
     seconds = usr_input[7:9] #Taking 8-9 letter from user input
     if usr_input[:4] == "help": #If users type help printing the help string
-        print(helpc)
+        print(colored(helpc, 'green'))
     elif usr_input[:4] == "exit":#If user types exit, breaking the loop
         break
     elif usr_input[:7] in ["encrypt", "decrypt"]: #Checking if the user input is in the list or not
