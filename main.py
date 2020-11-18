@@ -1,15 +1,11 @@
 #Importing platform module for finding out the os they are using
 import platform
 import random #Importing random for getting random numbers
-from os import sys as terminal #Importing this module to run system commands
-import termcolor
+from os import system as terminal #Importing this module to run system commands
 from termcolor import colored
-
-
 
 #Creating a Object called Encryptor which encrypts 
 class Encryptor:
-
 
     #As all the instance needs password taking it while initializing it
     def __init__(self, password):
@@ -63,8 +59,8 @@ def construct(ctype, tail, passw, passvalue):
             enc.word(passvalue)
         elif tail == '-f':
             enc.file(passvalue)
-    else: 
-        print("Invalid Command")#Priniting Invalid if the command does not exist
+        else: 
+            print("Invalid Command")#Priniting Invalid if the command does not exist
 
         
  
@@ -88,12 +84,19 @@ while True:
         print(colored(helpc, 'green'))
     elif usr_input[:4] == "exit":#If user types exit, breaking the loop
         break
+    elif usr_input == "clear":
+        if (platform.system() == "Windows"):
+            terminal("cls")
+        else:
+            terminal("clear")
     elif usr_input[:7] in ["encrypt", "decrypt"]: #Checking if the user input is in the list or not
         passw = random.choice([1,3,4])#Making a password a random number
         ctype = usr_input[:7]#Filtering the type of command into ctype
         tail = usr_input[8:10] #Taking the tail of command(file or word)
         latt = usr_input[11:] #Taking the file name or word
         construct(ctype,tail, passw, latt) #Passing it all to construct function
+    else:
+        terminal(usr_input)
 
 
 
