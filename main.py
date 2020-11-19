@@ -77,7 +77,7 @@ helpc = '''
 ######################################
 '''
 while True:
-    usr_input = input(colored("[Black Pheonix]# ",'red')) #Printing it to look like a console
+    usr_input = input(colored("[Black Pheonix]# ",'blue')) #Printing it to look like a console
     firsts = usr_input[:7] #Taking first seven character from user input
     seconds = usr_input[7:9] #Taking 8-9 letter from user input
     if usr_input[:4] == "help": #If users type help printing the help string
