@@ -20,14 +20,19 @@ class Encryptor:
 
     #Creating another instance which encrypts words
     def word (self, word):
+        #Generating random six digit code
+        passw = self.password
         enc = "" #Creating a variable for final word
-        passw = self.password #Acessing password from init
+        finpass = ""
         #Looping for every letter in the word
         for w in word:
-            aword = ord(w) + 0 #Changing it into its ascii code and adding a rando number
+            i = 0
+            aword = ord(w) + ord(passw[i % len(passw)])
+            #Changing it into its ascii code and adding a rando number
             aword = chr(aword) #Changing back to normal character
             enc += aword #Adding all the letters to final enc
-        print(enc)
+            i += 1
+        return enc
 
 #Creating another object for decrypting
 class Decryptor:
@@ -38,25 +43,32 @@ class Decryptor:
     #Creating a instance for the word
     def word (self, enc):
         passw = self.password #Getting the password from init
+        final = ""
         #Looping for every word given by the user
         for k in enc:
-            dword = ord(k) - 0 #Converting into ASCII and subtracting what was added while encrypinng
+            i = 0
+            dword = ord(k) - ord(passw[i % len(passw)])
+            #Converting into ASCII and subtracting what was added while encrypinng
             dword = chr(dword) #Converting back into character
-        print(dword)
+            i += 1
+            final += dword
+        return final
 
     
 #Creating a constructor function which constructs the object from user input
-def construct(ctype, tail, passw, passvalue):
+def construct(ctype, tail, passvalue):
     cond = True #Creating a variable called cond and setting it to true
+    usr_hash = input("Enter the password >> ")
     if ctype == "encrypt": #Encrypting if the user types encrypt
-        enc = Encryptor(passw)
+        enc = Encryptor(usr_hash)
     elif ctype == 'decrypt': #Decryping if the user types decrypt
-        enc = Decryptor(passw)
+        enc = Decryptor(usr_hash)
     else: # If the arguement is wrong setting cond to false
         cond = False
     if (cond): #Setting condition for files and words
         if tail == '-w':
-            enc.word(passvalue)
+            finword = enc.word(passvalue)
+            print(finword)
         elif tail == '-f':
             enc.file(passvalue)
         else: 
@@ -92,11 +104,10 @@ while True:
         else:
             terminal("clear")
     elif usr_input[:7] in ["encrypt", "decrypt"]: #Checking if the user input is in the list or not
-        passw = random.choice([1,3,4])#Making a password a random number
         ctype = usr_input[:7]#Filtering the type of command into ctype
         tail = usr_input[8:10] #Taking the tail of command(file or word)
         latt = usr_input[11:] #Taking the file name or word
-        construct(ctype,tail, passw, latt) #Passing it all to construct function
+        construct(ctype,tail, latt) #Passing it all to construct function
     else:
         terminal(usr_input)
 
