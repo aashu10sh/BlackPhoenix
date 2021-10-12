@@ -1,7 +1,7 @@
 # BlackPhoenix
 > A Python Based Ascci message encryption tool.
 
-< src='official_shet.png'img/>
+<img src='official_shet.png'> <img/>
 
 ## To Run
 ```bash
