@@ -1,3 +1,11 @@
 # BlackPhoenix
+> A Python Based Ascci message encryption tool.
 
-## Done by Apurba and Aashutosh and Samrat Nakarmi
+
+## To Run
+```bash
+php install -r requirements.txt
+```
+```bash
+python3 blackphoenix.py
+```
